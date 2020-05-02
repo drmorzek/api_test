@@ -1,8 +1,9 @@
 const app = require("./routes/mainRoute").app;
 
-const authRouter = require("./routes/authRoute");
+
 const newsRouter = require("./routes/newsRoute");
 const usersRouter = require("./routes/usersRoute");
+const authRouter = require("./routes/authRoute");
 
 const port = process.env.PORT || 3000;
 
