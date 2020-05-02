@@ -26,6 +26,7 @@ const usersSchema = {
         type: String,
         required: true,
         unique: true,
+        default: String(Date.now())+'@some'
     },
     password: {
         type: String,
@@ -34,7 +35,13 @@ const usersSchema = {
     },
 };
 
+const db = require("./db");
+
 module.exports = {
-    newsSchema: newsSchema,
-    usersSchema: usersSchema
+    newsModel: db.model(
+        "New", newsSchema
+    ),
+    usersModel: db.model(
+        "User", usersSchema
+    )
 };

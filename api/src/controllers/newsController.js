@@ -1,9 +1,4 @@
-const db = require("../models/db");
-const schems_collect = require("../models/schems");
-
-const newS = db.model(
-    "New", schems_collect.newsSchema
-);
+const newS = require("../models/schems").usersModel;
 
 exports.getAll = (req, res) => {
         newS.find().exec((err, newS) => {

@@ -1,9 +1,4 @@
-const db = require("../models/db");
-const schems_collect = require("../models/schems");
-
-const userS = db.model(
-    "User", schems_collect.usersSchema
-);
+const userS = require("../models/schems").usersModel;
 
 exports.getAll = (req, res) => {
         userS.find().exec((err, newS) => {
@@ -54,7 +49,7 @@ exports.replace = (req, res) => {
 exports.add = (req, res) => {
     let send = {
         id: Number(req.body.id),
-        email: String(req.body.email),
+        email: (req.body.email != undefined) ? String(req.body.email) : String(Date.now()) + '@some',
         password: String(req.body.password),
     };
 
