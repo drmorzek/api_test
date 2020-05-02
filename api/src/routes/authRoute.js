@@ -9,17 +9,6 @@ authsRouter.get('/', (req, res) => {
     res.send('startpage');
 });
 
-// authsRouter.all('/*/:param', (req, res) => {
-//     console.log({
-//         method: req.method,
-//         ip: req.ip,
-//         path: req.path,
-//         params: req.params.param,
-//         query: req.query,
-//         body: req.body
-//     });
-// });
-
 authsRouter.get("/register", (req, res) => {
     res.send('register');
 });
