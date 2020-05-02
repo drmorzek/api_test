@@ -31,8 +31,8 @@ exports.replace = (req, res) => {
         let send;
         if (Object.keys(req.body).length != 0) {
             news_one.id = Number(req.params.id);
-            news_one.login =
-                req.body.login != null ? String(req.body.login) : news_one.login;
+            news_one.email =
+                req.body.email != null ? String(req.body.email) : news_one.email;
             news_one.password =
                 req.body.password != null ?
                 String(req.body.password) :
@@ -54,13 +54,13 @@ exports.replace = (req, res) => {
 exports.add = (req, res) => {
     let send = {
         id: Number(req.body.id),
-        login: String(req.body.login),
+        email: String(req.body.email),
         password: String(req.body.password),
     };
 
-    let news_one = new userS(send);
+    let user = new userS(send);
 
-    news_one.save((err) => {
+    user.save((err) => {
         if (err) send = {
             message: err.message
         };

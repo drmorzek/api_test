@@ -22,7 +22,7 @@ const usersSchema = {
         required: true,
         unique: true,
     },
-    login: {
+    email: {
         type: String,
         required: true,
         unique: true,
