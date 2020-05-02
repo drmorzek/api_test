@@ -78,7 +78,7 @@ exports.delete = (req, res) => {
 
         res.send(
             (elem != null) ? elem : {
-                message: `Новость с id= ${req.params.id} уже давно удалена`
+                message: `Пользователь с id= ${req.params.id} уже давно удален`
             }
         );
     });
