@@ -6,8 +6,6 @@ const usersRouter = require("./routes/usersRoute");
 
 const port = process.env.PORT || 3000;
 
-
-
 app.use("/", authRouter);
 app.use("/news", newsRouter);
 app.use("/users", usersRouter);
