@@ -31,7 +31,7 @@ exports.logResponse = (req, res, next) => {
         oldEnd.apply(res, restArgs);
     };
     next();
-}
+};
 
 exports.sendError = (error, req, res, next) => {
     console.error(error);
@@ -41,4 +41,4 @@ exports.sendError = (error, req, res, next) => {
         error: String(error.message),
     });
     next();
-}
+};

@@ -3,8 +3,6 @@ const mainroute = require("./mainRoute")
 const authsRouter = mainroute.express.Router();
 
 
-
-
 authsRouter.get('/', (req, res) => {
     res.send('startpage');
 });
