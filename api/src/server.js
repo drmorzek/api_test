@@ -17,7 +17,7 @@ console.log(JWT1.verify());
 
 console.log("===============2й экземпляр===================")
 JWT2.set_key("afaenbguygehfuy")
-console.log(JWT2.key);
+console.log(JWT2._key);
 console.log(JWT2.get_token({
     "awfgsagsg": 2423523
 }));
