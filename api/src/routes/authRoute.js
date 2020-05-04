@@ -40,11 +40,15 @@ authsRouter.post('/login', (req, res, next) => {
             return res.redirect('/admin');
         });
     })(req, res, next);
-})
+});
 
 
 authsRouter.get("/logout", (req, res) => {
     res.send('logout');
+});
+
+authsRouter.get("/admin", (req, res) => {
+    res.send('admin');
 });
 
 module.exports = authsRouter;

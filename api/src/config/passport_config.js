@@ -32,4 +32,4 @@ passport.use(
   })
 );
 
-module.exports.passport = passport;
+module.exports = passport;

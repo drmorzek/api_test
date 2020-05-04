@@ -5,7 +5,7 @@ const bodyparser = require("body-parser");
 const mainMiddleware = require("../utils/mainMiddleware");
 const sessionMiddleware = require("../utils/sessionMiddleware")();
 
-const passport = require('../config/passport_config').passport;
+const passport = require('../config/passport_config');
 
 const app = express();
 
