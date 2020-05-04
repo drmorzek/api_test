@@ -18,7 +18,9 @@
     "jose": "^1.26.1",
     "mongoose": "^5.9.11",
     "multer": "^1.4.2",
-    "passport": "^0.4.1"
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "session-file-store": "^1.4.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.3"

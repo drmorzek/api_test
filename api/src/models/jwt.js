@@ -5,19 +5,24 @@ class JWT {
         this._JWK = require('jose').JWK;         
     }
 
-    set(key){
+    set_key(key){
+        this._secret = JSON.stringify(key);
         this._key = this._JWK.asKey(JSON.stringify(key)).toJWK(true);
         return this;
     }
 
-    get() {
-        return this._key; 
+    gen_key() {
+        this._key = this._JWK.generateSync("OKP", "Ed25519");
+        return this;
     }
 
-    new() {     
-        this._key = this._JWK.generateSync("OKP", "Ed25519");
-        return this; 
+    get_secret(){
+        return this._secret;
     }
+
+    get() {
+        return this._key; 
+    }    
 
     get_token(payload){
         this._payload = payload; 
