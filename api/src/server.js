@@ -40,7 +40,7 @@ console.log(JWT3.get_key())
 console.log(JWT3.get_token(payload));
 console.log(JWT3.verify());
 
-console.log("===============С указанным ключом ключа===================")
+console.log("===============С указанным ключом===================")
 const JWT4 = JWT();
 JWT4.set_key("anykey")
 // console.log(key);

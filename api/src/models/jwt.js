@@ -44,10 +44,10 @@ class JWT {
         return this._token;
     }
 
-    verify(){
+    verify(complete = false) {
         this._ver = this._JWT.verify(this.get_token(this._payload), this._key, 
         {
-            // complete: true
+            complete: complete
         }
         );
         return this._ver;
