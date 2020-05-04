@@ -2,7 +2,8 @@ class JWT {
 
     constructor() {
         this._JWT = require('jose').JWT;
-        this._JWK = require('jose').JWK;         
+        this._JWK = require('jose').JWK; 
+        this.gen_OKP();        
     }
 
     set_key(key){
@@ -12,20 +13,21 @@ class JWT {
     }
 
     gen_super_key(){
-        this.set_key(this.gen_key()).get().k;
+        this.set_key(this.set_key(JSON.stringify(this.gen_OKP())).get_key().k);
         return this;
     }
 
-    gen_key() {
+    gen_OKP() {
         this._key = this._JWK.generateSync("OKP", "Ed25519");
         return this;
     }
 
     get_secret(){
+        this._secret = (this._secret != undefined) ? this._secret : "secret key not found";
         return this._secret;
     }
 
-    get() {
+    get_key() {
         return this._key; 
     }    
 
