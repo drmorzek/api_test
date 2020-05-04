@@ -21,9 +21,8 @@ console.log(JWT1.verify());
 
 console.log("===============Свой ключ===================")
 const JWT2 = JWT();
-var key = "afaenbrs";
 // console.log(key);
-JWT2.set_key(key);
+JWT2.gen_super_key();
 console.log(JWT2.get_secret())
 console.log(JWT2.get())
 console.log(JWT2.get_token(payload));

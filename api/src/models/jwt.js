@@ -7,7 +7,12 @@ class JWT {
 
     set_key(key){
         this._secret = JSON.stringify(key);
-        this._key = this._JWK.asKey(JSON.stringify(key)).toJWK(true);
+        this._key = this._JWK.asKey(this._secret).toJWK(true);
+        return this;
+    }
+
+    gen_super_key(){
+        this.set_key(this.gen_key()).get().k;
         return this;
     }
 
