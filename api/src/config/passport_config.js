@@ -1,9 +1,10 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 
-const userDB = {
+const userDB = 
+  {
   id: 136345,
-  email: 'test@mail.ru',
+  email: 'test@mail.com',
   password: '123',
 };
 
