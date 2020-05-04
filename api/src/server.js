@@ -5,7 +5,7 @@ const newsRouter = require("./routes/newsRoute");
 const usersRouter = require("./routes/usersRoute");
 const authRouter = require("./routes/authRoute");
 
-const JWT = require("./models/jwt");
+// const JWT = require("./models/jwt");
 
 
 const port = process.env.PORT || 3000;

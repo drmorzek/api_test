@@ -10,6 +10,10 @@ const passport = require('../config/passport_config');
 
 
 const app = express();
+    app.use(bodyparser.json());
+    app.use(bodyparser.urlencoded({
+        extended: true
+    }));
 
 
     app.use(sessionMiddleware.session);
@@ -17,14 +21,11 @@ const app = express();
     app.use(passport.session());
 
 
-    app.use(bodyparser.json());
-    app.use(bodyparser.urlencoded({
-        extended: true
-    }));
+    
 
-
-    app.use(mainMiddleware.logResponse);
+    // app.use(mainMiddleware.logResponse);
     app.use(mainMiddleware.sendError);
+    
 
 
 

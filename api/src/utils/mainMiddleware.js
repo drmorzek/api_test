@@ -35,6 +35,7 @@ exports.logResponse = (req, res, next) => {
 
 exports.sendError = (error, req, res, next) => {
     console.error(error);
+    
     res.status(500).send({
         message: "Что-то пошло не так",
         type: String(error.type),
@@ -42,3 +43,4 @@ exports.sendError = (error, req, res, next) => {
     });
     next();
 };
+
