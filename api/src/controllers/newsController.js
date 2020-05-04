@@ -1,4 +1,4 @@
-const newS = require("../models/schems").usersModel;
+const newS = require("../models/schems").newsModel;
 
 exports.getAll = (req, res) => {
         newS.find().exec((err, newS) => {
