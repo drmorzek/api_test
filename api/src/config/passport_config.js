@@ -1,14 +1,21 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 
-const userDB = 
-  {
-  id: 136345,
-  email: 'test@mail.com',
-  password: '123',
-};
+const userS = require("../models/schems").usersModel;
+
+const JWT = require("../models/jwt")();
+
+function auth(bodypassword, key) {
+  let findtoken = JWT;
+  findtoken.set_key(key);
+  findtoken.get_token({
+    password: String(bodypassword)
+  });
+  return findtoken.verify().password == bodypassword;
+}
 
 passport.serializeUser(function(user, done) {
+  
   console.log('Сериализация: ', user);
   done(null, user.id);
 });
@@ -25,11 +32,21 @@ passport.use(
     password,
     done
   ) {
-    if (email === userDB.email && password === userDB.password) {
-      return done(null, userDB);
-    } else {
-      return done(null, false);
-    }
+    // console.log(email);
+    console.log(password);
+
+    // console.log(auth(email, password));
+    
+    userS.findOne({
+      "email": email
+    },(err, user) => {
+      console.log(auth(password, user.key) );
+      if (auth(password, user.key)) {
+         done(null, user);
+      } else {
+         done(null, false);
+      }
+    });    
   })
 );
 

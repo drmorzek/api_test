@@ -12,7 +12,12 @@ class JWT {
         return this;
     }
 
-    gen_super_key(){
+    key_from_db(key){
+        // console.log(JSON.parse(key))
+       this._key = this._JWK.asKey(JSON.parse(key));
+    }
+
+    gen_secret(){
         this.set_key(this.set_key(JSON.stringify(this.gen_OKP())).get_key().k);
         return this;
     }
@@ -42,6 +47,10 @@ class JWT {
         // }
         
         return this._token;
+    }
+
+    set_payload(payload){
+        this._payload = payload;
     }
 
     verify(complete = false) {

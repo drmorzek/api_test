@@ -1,4 +1,5 @@
 const userS = require("../models/schems").usersModel;
+const JWT = require("../models/jwt")();
 
 exports.getAll = (req, res) => {
         userS.find().exec((err, newS) => {
@@ -47,18 +48,28 @@ exports.replace = (req, res) => {
 };
 
 exports.add = (req, res) => {
+    let token = JWT;
+console.log(req.body);
+    let secret = token.gen_secret().get_key();
+    let passhash = token.get_token({ "password": String(req.body.password)});
+
     let send = {
-        id: Number(req.body.id),
+        id: ((req.body.id) != undefined) ? Number(req.body.id) : Number(Math.floor(Math.random() * Date.now())),
         email: (req.body.email != undefined) ? String(req.body.email) : String(Date.now()) + '@some',
-        password: String(req.body.password),
+        password: String(passhash),
+        key: JSON.stringify(secret)
     };
 
     let user = new userS(send);
+    
 
-    user.save((err) => {
+    user.save((err, data) => {
         if (err) send = {
             message: err.message
         };
+        console.log(data);
+        
+
         res.send(send);
     });
 };

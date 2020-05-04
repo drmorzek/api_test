@@ -3,7 +3,7 @@ const session = require('express-session');
 const FileStore = require('session-file-store')(session);
 const jwt = require('../models/jwt')();
 
-const session_secret = jwt.gen_super_key().get_secret();
+const session_secret = jwt.gen_secret().get_secret();
 
 const session_config = {    
     secret: session_secret,
@@ -13,7 +13,7 @@ const session_config = {
     cookie: {
         path: './cookies/',
         httpOnly: true,
-        maxAge:  1000,
+        maxAge:  6000,
     },
     resave: false,
     saveUninitialized: false

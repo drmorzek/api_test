@@ -1,12 +1,10 @@
 
 const mainroute = require("./mainRoute");
 const passport = mainroute.passport;
-
 const authsRouter = mainroute.express.Router();
 
 
 authsRouter.get('/', (req, res) => {
-    // console.log(req.session);
     res.send('startpage');
 });
 
@@ -58,7 +56,7 @@ const auth = (req, res, next) => {
     // } else {
     //     return res.redirect('/');
     // }
-    console.log(req.session);
+    // console.log(req.session);
     next()
 };
 

@@ -19,7 +19,6 @@ const newsSchema = {
 const usersSchema = {
     id: {
         type: Number,
-        required: true,
         unique: true,
     },
     email: {
@@ -33,7 +32,13 @@ const usersSchema = {
         required: true,
         default: 'Some'
     },
+    key: {
+        type: String
+    }
 };
+
+
+
 
 const db = require("./db");
 

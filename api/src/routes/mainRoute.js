@@ -25,11 +25,6 @@ const app = express();
 
     // app.use(mainMiddleware.logResponse);
     app.use(mainMiddleware.sendError);
-    
-
-
-
-
 
 module.exports = {
     app: app,
