@@ -50,6 +50,7 @@ class JWT {
             complete: complete
         }
         );
+        if (complete == false) delete this._ver.iat;
         return this._ver;
     }
 }
