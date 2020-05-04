@@ -5,8 +5,11 @@ const jwt = require('../models/jwt')();
 const session_secret = jwt.gen_super_key().get_secret();
 
 const session_config = {
+    
     secret: session_secret,
-    store: new FileStore(),
+    store: new FileStore({
+        path: "./src/utils/session/"
+    }),
     cookie: {
         path: './cookies/',
         httpOnly: true,
