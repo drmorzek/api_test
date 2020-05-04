@@ -2,6 +2,7 @@ const session = require('express-session');
 
 const FileStore = require('session-file-store')(session);
 const jwt = require('../models/jwt')();
+
 const session_secret = jwt.gen_super_key().get_secret();
 const FileStore_secret = jwt.gen_super_key().get_secret();
 
