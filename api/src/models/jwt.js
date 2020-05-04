@@ -3,41 +3,41 @@ class JWT {
     constructor() {
         this._JWT = require('jose').JWT;
         this._JWK = require('jose').JWK;         
-        this._JWS = require('jose').JWS;         
     }
 
-    set_key(key){
+    set(key){
         this._key = this._JWK.asKey(JSON.stringify(key)).toJWK(true);
+        return this;
     }
 
-    get_key() {
+    get() {
         return this._key; 
     }
 
-    new_key() {     
+    new() {     
         this._key = this._JWK.generateSync("OKP", "Ed25519");
-        return this._key; 
+        return this; 
     }
 
     get_token(payload){
         this._payload = payload; 
-        if(this._key.kty == 'oct') {
-            this._token = this._JWS.sign(payload, this._JWK.asKey(this._key), {
-                alg: 'HS512'
-            });
-        } else {
-           this._token = this._JWT.sign(payload, this._JWK.asKey(this._key), {
-               algorithm: "EdDSA"
+        this._token = this._JWT.sign(payload, this._JWK.asKey(this._key), {
+               algorithm: (this._key.kty == 'oct') ? "HS512" : "EdDSA",               
+               header: {
+                   typ: 'JWT'
+               }
            });           
-        }
+        // }
         
         return this._token;
     }
 
     verify(){
-        this._ver = this._JWT.verify(this.get_token(this._payload), this._key, {
-            complete: true
-        });
+        this._ver = this._JWT.verify(this.get_token(this._payload), this._key, 
+        {
+            // complete: true
+        }
+        );
         return this._ver;
     }
 }
