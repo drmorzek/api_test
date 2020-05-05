@@ -1,12 +1,21 @@
 {
-  "name": "test",
+  "name": "test_api",
   "version": "1.0.0",
-  "description": "",
+  "description": "test_api",
   "main": "api/src/server.js",
   "scripts": {
     "start": "node api/src/server.js",
-    "dev": "nodemon api/src/server.js"
+    "dev": "nodemon api/src/server.js",
+	"build": "cd api && npm install"
   },
-  "author": "",
-  "license": "ISC"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/drmorzek/api_test.git"
+  },
+  "author": "Andrew",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/drmorzek/api_test/issues"
+  },
+  "homepage": "https://github.com/drmorzek/api_test#readme"
 }
