@@ -49,7 +49,7 @@ exports.replace = (req, res) => {
 
 exports.add = (req, res) => {
     let token = JWT;
-console.log(req.body);
+    // console.log(req.body);
     let secret = token.gen_secret().get_key();
     let passhash = token.get_token({ "password": String(req.body.password)});
 
@@ -61,7 +61,8 @@ console.log(req.body);
 
         firstName: (req.body.firstName != undefined) ? String(req.body.firstName) : " ",
         lastName: (req.body.lastName != undefined) ? String(req.body.lastName) : " ",
-        about: (req.body.about != undefined) ? String(req.body.about)  : " "
+        about: (req.body.about != undefined) ? String(req.body.about)  : " ",
+        avatar: (req.files[0].filename != undefined) ? String(req.files[0].filename) : " "
     };
 
     let user = new userS(send);
