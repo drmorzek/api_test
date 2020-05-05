@@ -32,6 +32,22 @@ const usersSchema = {
         required: true,
         default: 'Some'
     },
+    firstName: {
+        type: String,
+        required: false
+    },
+    lastName: {
+        type: String,
+        required: false
+    },
+    about: {
+        type: String,
+        required: false
+    },
+    avatar: {
+        type: String,
+        required: false
+    },
     key: {
         type: String
     }

@@ -43,9 +43,7 @@ class JWT {
                header: {
                    typ: 'JWT'
                }
-           });           
-        // }
-        
+           });             
         return this._token;
     }
 
@@ -62,6 +60,12 @@ class JWT {
         if (complete == false) delete this._ver.iat;
         return this._ver;
     }
+
+    auth(password, key){
+        this._ver = this._JWT.verify(password, this._JWK.asKey(JSON.parse(key)).toJWK(true));
+        return this._ver.password;
+    }
+
 }
 
 module.exports = () => new JWT();

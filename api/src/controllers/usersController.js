@@ -22,22 +22,22 @@ exports.getOne = (req, res) => {
 exports.replace = (req, res) => {
     userS.findOne({
         id: Number(req.params.id)
-    }, (err, news_one) => {
+    }, (err, users_one) => {
         if (err) throw err;
         let send;
         if (Object.keys(req.body).length != 0) {
-            news_one.id = Number(req.params.id);
-            news_one.email =
-                req.body.email != null ? String(req.body.email) : news_one.email;
-            news_one.password =
+            users_one.id = Number(req.params.id);
+            users_one.email =
+                req.body.email != null ? String(req.body.email) : users_one.email;
+            users_one.password =
                 req.body.password != null ?
                 String(req.body.password) :
-                news_one.password;
+                users_one.password;
 
-            send = news_one;
+            send = users_one;
         }
 
-        news_one.save((err) => {
+        users_one.save((err) => {
             if (err) send = {
                 message: err.message
             };
@@ -57,7 +57,11 @@ console.log(req.body);
         id: ((req.body.id) != undefined) ? Number(req.body.id) : Number(Math.floor(Math.random() * Date.now())),
         email: (req.body.email != undefined) ? String(req.body.email) : String(Date.now()) + '@some',
         password: String(passhash),
-        key: JSON.stringify(secret)
+        key: JSON.stringify(secret),
+
+        firstName: (req.body.firstName != undefined) ? String(req.body.firstName) : " ",
+        lastName: (req.body.lastName != undefined) ? String(req.body.lastName) : " ",
+        about: (req.body.about != undefined) ? String(req.body.about)  : " "
     };
 
     let user = new userS(send);
@@ -67,8 +71,7 @@ console.log(req.body);
         if (err) send = {
             message: err.message
         };
-        console.log(data);
-        
+        // console.log(data);       
 
         res.send(send);
     });
